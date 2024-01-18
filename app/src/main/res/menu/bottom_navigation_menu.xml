@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item
+        android:id="@+id/menu_item1"
+        android:title="Home"
+        android:icon="@drawable/logo_ipcd" />
+
+    <item
+        android:id="@+id/menu_item2"
+        android:title="QR"
+        android:icon="@drawable/logo_ipcd" />
+    <item
+        android:id="@+id/menu_item3"
+        android:title="profile"
+        android:icon="@drawable/logo_ipcd" />
+    <!-- Add more items as needed -->
+</menu>

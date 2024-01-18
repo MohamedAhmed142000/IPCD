@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".qr_fragment"
+    >
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="74dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/logo_ipcd"
+        android:contentDescription="@string/todo" />
+    <!-- TODO: Update blank fragment layout -->
+
+    <EditText
+        android:id="@+id/editTextUrl"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="213dp"
+        android:layout_marginEnd="52dp"
+        android:hint="@string/enter_url" />
+
+    <Button
+        android:id="@+id/buttonGenerateQR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextUrl"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="119dp"
+        android:text="@string/generate_qr_code" />
+
+    <ImageView
+        android:id="@+id/imageViewQR"
+        android:layout_width="235dp"
+        android:layout_height="190dp"
+        android:layout_below="@id/buttonGenerateQR"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="78dp" />
+
+
+</RelativeLayout>

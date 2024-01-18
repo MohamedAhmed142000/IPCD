@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".home_fragment"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="74dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/logo_ipcd" />
+
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_margin="8dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Prof.cat"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="Prof.cat : " />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toEndOf="@+id/Prof.cat"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Doctors"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Doctors" />
+
+                    <RadioButton
+                        android:id="@+id/workers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="workers" />
+
+                    <RadioButton
+                        android:id="@+id/Narses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Narses" />
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/linearLayout"
+                    android:layout_width="150dp"
+                    android:layout_height="184dp"
+                    android:layout_below="@+id/Prof.cat"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/bef_pat"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-pat" />
+
+                    <CheckBox
+                        android:id="@+id/bef_asept"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-asept" />
+
+                    <CheckBox
+                        android:id="@+id/aft_b.f"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-b.f" />
+
+                    <CheckBox
+                        android:id="@+id/aft_pat"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-pat" />
+
+                    <CheckBox
+                        android:id="@+id/aft.p.surr"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft.p.surr" />
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:layout_width="130dp"
+                    android:layout_height="110dp"
+                    android:layout_below="@+id/radioGroup"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/linearLayout"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/HR"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HR" />
+
+                    <CheckBox
+                        android:id="@+id/HW"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HW" />
+
+                    <RadioButton
+                        android:id="@+id/missed"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="missed" />
+                </RadioGroup>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Prof.cat1"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="Prof.cat : " />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup1"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toEndOf="@+id/Prof.cat1"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Doctors1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Doctors" />
+
+                    <RadioButton
+                        android:id="@+id/workers1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="workers" />
+
+                    <RadioButton
+                        android:id="@+id/Narses1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Narses" />
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="150dp"
+                    android:layout_height="184dp"
+                    android:layout_below="@+id/Prof.cat1"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/bef_pat1"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-pat" />
+
+                    <CheckBox
+                        android:id="@+id/bef_asept1"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-asept" />
+
+                    <CheckBox
+                        android:id="@+id/aft_b.f1"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-b.f" />
+
+                    <CheckBox
+                        android:id="@+id/aft_pat1"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-pat" />
+
+                    <CheckBox
+                        android:id="@+id/aft.p.surr1"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft.p.surr" />
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:layout_width="130dp"
+                    android:layout_height="110dp"
+                    android:layout_below="@+id/radioGroup1"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/linearLayout1"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/HR1"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HR" />
+
+                    <CheckBox
+                        android:id="@+id/HW1"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HW" />
+
+                    <RadioButton
+                        android:id="@+id/missed1"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="missed" />
+                </RadioGroup>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Third CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="16dp">
+
+            <!-- Your existing layout content for the third card view -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Prof.cat2"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="Prof.cat : " />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup2"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toEndOf="@+id/Prof.cat2"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Doctors2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Doctors" />
+
+                    <RadioButton
+                        android:id="@+id/workers2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="workers" />
+
+                    <RadioButton
+                        android:id="@+id/Narses2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Narses" />
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="150dp"
+                    android:layout_height="184dp"
+                    android:layout_below="@+id/Prof.cat2"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/bef_pat2"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-pat" />
+
+                    <CheckBox
+                        android:id="@+id/bef_asept2"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-asept" />
+
+                    <CheckBox
+                        android:id="@+id/aft_b.f2"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-b.f" />
+
+                    <CheckBox
+                        android:id="@+id/aft_pat2"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-pat" />
+
+                    <CheckBox
+                        android:id="@+id/aft.p.surr2"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft.p.surr" />
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:layout_width="130dp"
+                    android:layout_height="110dp"
+                    android:layout_below="@+id/radioGroup2"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/linearLayout2"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/HR2"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HR" />
+
+                    <CheckBox
+                        android:id="@+id/HW2"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HW" />
+
+                    <RadioButton
+                        android:id="@+id/missed2"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="missed" />
+                </RadioGroup>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Fourth CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="16dp">
+
+            <!-- Your existing layout content for the fourth card view -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Prof.cat3"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="Prof.cat : " />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup3"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toEndOf="@+id/Prof.cat3"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Doctors3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Doctors" />
+
+                    <RadioButton
+                        android:id="@+id/workers3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="workers" />
+
+                    <RadioButton
+                        android:id="@+id/Narses3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Narses" />
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/linearLayout3"
+                    android:layout_width="150dp"
+                    android:layout_height="184dp"
+                    android:layout_below="@+id/Prof.cat3"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/bef_pat3"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-pat" />
+
+                    <CheckBox
+                        android:id="@+id/bef_asept3"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-asept" />
+
+                    <CheckBox
+                        android:id="@+id/aft_b.f3"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-b.f" />
+
+                    <CheckBox
+                        android:id="@+id/aft_pat3"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-pat" />
+
+                    <CheckBox
+                        android:id="@+id/aft.p.surr3"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft.p.surr" />
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:layout_width="130dp"
+                    android:layout_height="110dp"
+                    android:layout_below="@+id/radioGroup3"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/linearLayout3"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/HR3"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HR" />
+
+                    <CheckBox
+                        android:id="@+id/HW3"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HW" />
+
+                    <RadioButton
+                        android:id="@+id/missed3"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="missed" />
+                </RadioGroup>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Fifth CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="16dp">
+
+            <!-- Your existing layout content for the fifth card view -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/Prof.cat4"
+                    android:layout_width="100dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="2dp"
+                    android:gravity="center"
+                    android:text="Prof.cat : " />
+
+                <RadioGroup
+                    android:id="@+id/radioGroup4"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toEndOf="@+id/Prof.cat4"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/Doctors4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="Doctors" />
+
+                    <RadioButton
+                        android:id="@+id/workers4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="workers" />
+
+                    <RadioButton
+                        android:id="@+id/Narses4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Narses" />
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="150dp"
+                    android:layout_height="184dp"
+                    android:layout_below="@+id/Prof.cat4"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/bef_pat4"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-pat" />
+
+                    <CheckBox
+                        android:id="@+id/bef_asept4"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="bef-asept" />
+
+                    <CheckBox
+                        android:id="@+id/aft_b.f4"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-b.f" />
+
+                    <CheckBox
+                        android:id="@+id/aft_pat4"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft-pat" />
+
+                    <CheckBox
+                        android:id="@+id/aft.p.surr4"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="aft.p.surr" />
+
+                </RadioGroup>
+
+                <RadioGroup
+                    android:layout_width="130dp"
+                    android:layout_height="110dp"
+                    android:layout_below="@+id/radioGroup4"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/linearLayout4"
+                    android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/HR4"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HR" />
+
+                    <CheckBox
+                        android:id="@+id/HW4"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="HW" />
+
+                    <RadioButton
+                        android:id="@+id/missed4"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:text="missed" />
+                </RadioGroup>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Button to Save and Clear -->
+        <Button
+            android:id="@+id/buttonSaveClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:text="Save / Clear" />
+
+    </LinearLayout>
+</ScrollView>

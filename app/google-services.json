@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "596803578106",
+    "project_id": "ipcd-4e342",
+    "storage_bucket": "ipcd-4e342.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596803578106:android:7a096e8a3f3c9864a00143",
+        "android_client_info": {
+          "package_name": "com.example.ipcd"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPitVyNltTAgCIsira-TknMWhPil8Bswk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
