@@ -9,4 +9,10 @@
     <string name="enter_url">Enter URL</string>
     <string name="generate_qr_code">Generate QR Code</string>
     <string name="todo">TODO</string>
+    <string name="label_prof_type">Who are you?</string>
+    <string name="label_doctor">Doctor</string>
+    <string name="label_nurse">Nurse</string>
+    <string name="label_worker">Worker</string>
+    <string name="label_select_from_below">Select from below:</string>
+    <string name="action_save">Save</string>
 </resources>

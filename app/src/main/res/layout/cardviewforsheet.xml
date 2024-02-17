@@ -12,7 +12,7 @@
     app:cardUseCompatPadding="true"
     app:contentPadding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".home_fragment">
+    tools:context=".app.home.HomeFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"

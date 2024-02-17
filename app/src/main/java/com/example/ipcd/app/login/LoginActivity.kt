@@ -3,13 +3,11 @@ package com.example.ipcd.app.login
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.text.method.HideReturnsTransformationMethod
-import android.text.method.PasswordTransformationMethod
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.example.ipcd.MainActivity
+import com.example.ipcd.app.home.MainActivity
 import com.example.ipcd.R
 import com.example.ipcd.UserActivity
 import com.example.ipcd.databinding.LoginActivityBinding
