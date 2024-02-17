@@ -1,13 +1,12 @@
 package com.example.ipcd.app.home
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.ipcd.MainApplication
-import com.example.ipcd.data.Answer
 import com.example.ipcd.data.ObservationForm
 import com.example.ipcd.data.Type
+import com.example.ipcd.database.AnswerEntity
 import com.example.ipcd.database.SavedFormAnswers
 import com.example.ipcd.database.SavedFormEntity
 import com.example.ipcd.database.getDatabase
@@ -30,7 +29,7 @@ class HomeViewModel : ViewModel() {
         )
     }
 
-    fun updateObservationFormAnswer(formId: Int, answer: Answer, isChecked: Boolean) {
+    fun updateObservationFormAnswer(formId: Int, answer: AnswerEntity, isChecked: Boolean) {
         _observationFormList.value?.toMutableList()?.let {
             val formIndex = it.indexOfFirst { item -> item.id == formId }
             val observationForm = it[formIndex]
