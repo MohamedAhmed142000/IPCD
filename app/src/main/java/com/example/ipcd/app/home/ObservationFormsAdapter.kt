@@ -9,15 +9,22 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ipcd.data.ObservationForm
+import com.example.ipcd.data.Type
 import com.example.ipcd.databinding.ItemObservationFormBinding
 
-class ObservationFormsAdapter(private val context: Context) :
+class ObservationFormsAdapter(
+    private val context: Context,
+    private val onTypeClickListener: OnTypeClickListener,
+    private val onAnswerClickListener: OnAnswerClickListener
+) :
     ListAdapter<ObservationForm, ObservationFormsAdapter.ViewHolder>(ObservationFormDiffCallback()) {
 
     class ViewHolder(private val binding: ItemObservationFormBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
             observationForm: ObservationForm,
+            onTypeClickListener: OnTypeClickListener,
+            onAnswerClickListener: OnAnswerClickListener,
             context: Context,
         ) {
             binding.observationForm = observationForm
@@ -30,10 +37,19 @@ class ObservationFormsAdapter(private val context: Context) :
                 })
             }
 
+            binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+                onTypeClickListener.onClick(
+                    observationForm.id,
+                    Type.entries.first { it.getId() == checkedId })
+            }
+
             observationForm.answers.forEach {
                 binding.chipGroup.addView(CheckBox(context).apply {
                     id = it.id
                     text = it.text
+                    setOnCheckedChangeListener { _, isChecked ->
+                        onAnswerClickListener.onClick(observationForm.id, isChecked, it)
+                    }
                 })
             }
         }
@@ -52,7 +68,7 @@ class ObservationFormsAdapter(private val context: Context) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position), context)
+        holder.bind(getItem(position), onTypeClickListener, onAnswerClickListener, context)
     }
 }
 
