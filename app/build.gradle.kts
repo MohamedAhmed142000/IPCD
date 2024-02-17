@@ -40,31 +40,26 @@ android {
     }
 }
 dependencies {
+    // Support
+    implementation("androidx.appcompat:appcompat:1.6.1")
 
-    implementation ("androidx.room:room-runtime:2.3.0")
-    kapt ("androidx.room:room-compiler:2.3.0")
-
-    // Add these if you are using Kotlin
-    implementation ("androidx.room:room-ktx:2.3.0")
     // ViewModel and LiveData (arch components)
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation ("androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1")
 
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    // Room
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
+    // UI
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("com.google.android.material:material:1.11.0")
-    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
-    implementation("com.google.firebase:firebase-analytics")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.1")
 
-    implementation("com.google.firebase:firebase-firestore:24.10.0")
-    implementation("com.google.firebase:firebase-auth:22.3.0")
-    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
+    // Testing
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
-
 }

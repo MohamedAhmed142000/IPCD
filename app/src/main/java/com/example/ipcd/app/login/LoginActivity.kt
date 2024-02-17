@@ -11,7 +11,6 @@ import com.example.ipcd.app.home.MainActivity
 import com.example.ipcd.R
 import com.example.ipcd.UserActivity
 import com.example.ipcd.databinding.LoginActivityBinding
-import com.google.firebase.firestore.FirebaseFirestore.*
 
 class LoginActivity : AppCompatActivity() {
 
