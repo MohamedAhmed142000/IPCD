@@ -6,12 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ipcd.data.ObservationForm
+import androidx.lifecycle.ViewModelProvider
 import com.example.ipcd.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private val TAG = "HomeFragment"
+
+    private val homeViewModel by lazy { ViewModelProvider(this)[HomeViewModel::class.java] }
+
 
     private lateinit var formsAdapter: ObservationFormsAdapter
 
@@ -21,24 +24,29 @@ class HomeFragment : Fragment() {
     ): View {
         val binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = homeViewModel
         binding.executePendingBindings()
 
         val onAnswerClickListener = OnAnswerClickListener { formId, isChecked, answer ->
-            Log.i(
-                TAG,
-                "OnAnswerClickListener: formId: $formId isChecked: $isChecked answer: $answer"
-            )
+            if (answer != null)
+                homeViewModel.updateObservationFormAnswer(formId, answer, isChecked)
         }
 
         val onTypeClickListener = OnTypeClickListener { formId, type ->
-            Log.i(TAG, "OnTypeClickListener: formId: $formId type: $type")
+            if (type != null)
+                homeViewModel.updateObservationFormType(formId, type)
         }
 
         formsAdapter =
             ObservationFormsAdapter(requireContext(), onTypeClickListener, onAnswerClickListener)
         binding.recyclerView.adapter = formsAdapter
 
-        formsAdapter.submitList(ObservationForm.OBSERVATION_FORMS_LIST)
+        homeViewModel.observationFormList.observe(viewLifecycleOwner) {
+            if (it != null) {
+                formsAdapter.submitList(it)
+            }
+        }
+
 
         return binding.root
     }

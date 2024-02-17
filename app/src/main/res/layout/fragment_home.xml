@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.ipcd.app.home.HomeViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -42,6 +44,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/action_save"
+                android:onClick="@{() -> viewModel.save()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
