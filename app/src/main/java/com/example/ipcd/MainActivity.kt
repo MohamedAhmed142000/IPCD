@@ -25,12 +25,12 @@ class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSe
             }
             R.id.menu_item2 -> {
                 // Handle item 2 click
-                loadFragment(qr_fragment())
+                loadFragment(com.example.ipcd.qr_fragment())
                 return true
             }
             R.id.menu_item3 -> {
                 // Handle item 2 click
-                loadFragment(profile_fregment())
+                loadFragment(com.example.ipcd.profile_fregment())
                 return true
             }
             // Add more cases for other items if needed
