@@ -28,6 +28,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        dataBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -43,8 +46,10 @@ dependencies {
 
     // Add these if you are using Kotlin
     implementation ("androidx.room:room-ktx:2.3.0")
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0")
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.0")
+    // ViewModel and LiveData (arch components)
+    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation ("androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1")
+
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")

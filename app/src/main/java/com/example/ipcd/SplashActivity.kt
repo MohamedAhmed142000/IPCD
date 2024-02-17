@@ -5,7 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-
+import com.example.ipcd.app.login.LoginActivity
 
 
 class SplashActivity : AppCompatActivity() {
