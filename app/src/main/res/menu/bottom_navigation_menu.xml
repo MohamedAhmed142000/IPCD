@@ -8,11 +8,11 @@
 
     <item
         android:id="@+id/menu_item2"
-        android:title="QR"
+        android:title="Reports"
         android:icon="@drawable/logo_ipcd" />
     <item
         android:id="@+id/menu_item3"
-        android:title="profile"
+        android:title="Profile"
         android:icon="@drawable/logo_ipcd" />
     <!-- Add more items as needed -->
 </menu>

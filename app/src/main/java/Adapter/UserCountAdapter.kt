@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import com.example.ipcd.R
-import com.example.ipcd.qr_fragment
 import data.UserCount
 
 class UserCountAdapter(context: Context, resource: Int, objects: List<UserCount>) :
