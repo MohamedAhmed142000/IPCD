@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.ipcd.R
 import com.example.ipcd.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -35,12 +37,26 @@ class HomeFragment : Fragment() {
         }
 
         formsAdapter =
-            ObservationFormsAdapter(requireContext(), onTypeClickListener, onAnswerClickListener, false)
+            ObservationFormsAdapter(
+                requireContext(),
+                onTypeClickListener,
+                onAnswerClickListener,
+                false
+            )
         binding.recyclerView.adapter = formsAdapter
 
         homeViewModel.observationFormList.observe(viewLifecycleOwner) {
             if (it != null) {
                 formsAdapter.submitList(it)
+            }
+        }
+        homeViewModel.savedSuccess.observe(viewLifecycleOwner) {
+            if (it != null && it) {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.message_saved_success), Toast.LENGTH_SHORT
+                ).show()
+                homeViewModel.onSavedSuccessDone()
             }
         }
 

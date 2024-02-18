@@ -20,6 +20,10 @@ class HomeViewModel : ViewModel() {
     val observationFormList: LiveData<List<ObservationForm>?>
         get() = _observationFormList
 
+    private val _savedSuccess = MutableLiveData<Boolean>()
+    val savedSuccess: LiveData<Boolean>
+        get() = _savedSuccess
+
     init {
         resetForms()
     }
@@ -77,8 +81,13 @@ class HomeViewModel : ViewModel() {
                 }
             }
 
+            _savedSuccess.value = true
             resetForms()
         }
+    }
+
+    fun onSavedSuccessDone() {
+        _savedSuccess.value = false
     }
 
     private fun resetForms() {
