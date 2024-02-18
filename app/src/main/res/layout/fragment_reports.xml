@@ -21,25 +21,62 @@
             android:layout_height="75dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/logo_ipcd"
-            app:layout_constraintBottom_toTopOf="@+id/showDataButton"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/showDataButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView_startDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:date="@{viewModel.filterStartDate}"
+                android:text="@string/label_start_date" />
+
+            <TextView
+                android:id="@+id/textView_endDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:date="@{viewModel.filterEndDate}"
+                android:layout_marginVertical="8dp"
+                android:text="@string/label_end_date" />
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/showDataButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="64dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginVertical="8dp"
             android:onClick="@{() -> viewModel.getAllSavedObservationForms()}"
             android:text="@string/action_show_data"
             app:layout_constraintBottom_toTopOf="@+id/textViewResult"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
             android:id="@+id/textViewResult"
@@ -48,7 +85,6 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="16dp"
             android:text="@{viewModel.statisticsCount}"
             android:textAlignment="center"
             android:textSize="16sp"

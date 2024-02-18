@@ -8,7 +8,9 @@ import com.example.ipcd.R
 import com.example.ipcd.data.ObservationForm
 import com.example.ipcd.data.Type
 import com.example.ipcd.database.getDatabase
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 class ReportViewModel : ViewModel() {
 
@@ -22,6 +24,17 @@ class ReportViewModel : ViewModel() {
     val statisticsCount: LiveData<String?>
         get() = _statisticsCount
 
+    private val filterTypes: MutableList<Type> = mutableListOf(Type.Doctor, Type.Nurse, Type.Worker)
+
+
+    private val _filterStartDate = MutableLiveData<Date?>()
+    val filterStartDate: LiveData<Date?>
+        get() = _filterStartDate
+
+
+    private val _filterEndDate = MutableLiveData<Date?>()
+    val filterEndDate: LiveData<Date?>
+        get() = _filterEndDate
 
     private fun setStatisticsCount(observationFormList: List<ObservationForm>) {
         val doctorsCount = observationFormList.count { it.selectedType == Type.Doctor }
@@ -51,8 +64,39 @@ class ReportViewModel : ViewModel() {
             )
         }
 
-        setStatisticsCount(savedObservationForms)
+        val filteredList = savedObservationForms.filter { filterTypes.contains(it.selectedType) }
+        setStatisticsCount(filteredList)
 
-        _observationFormList.value = savedObservationForms.sortedByDescending { it.date.time }
+        _observationFormList.value =
+            if (_filterStartDate.value != null && _filterEndDate.value != null) {
+                filteredList.filter {
+                    removeHoursFromDate(it.date)?.let { date ->
+                        date.time <= removeHoursFromDate(_filterEndDate.value!!)!!.time && date.time >= removeHoursFromDate(_filterStartDate.value!!)!!.time
+                    } ?: false
+                }
+            } else {
+                filteredList
+            }.sortedByDescending { it.date.time }
+    }
+
+    fun updateTypesFilters(type: Type, isChecked: Boolean) {
+        if (isChecked) {
+            filterTypes.add(type)
+        } else {
+            filterTypes.remove(type)
+        }
+    }
+
+    fun updateStartDate(startDate: Date) {
+        _filterStartDate.value = startDate
+    }
+
+    fun updateEndDate(endDate: Date) {
+        _filterEndDate.value = endDate
+    }
+
+    private fun removeHoursFromDate(date: Date): Date? {
+        val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        return formatter.parse(formatter.format(date))
     }
 }

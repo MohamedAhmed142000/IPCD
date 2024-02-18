@@ -18,4 +18,6 @@
     <string name="action_show_data">Show Data</string>
     <string name="value_statistics_count">There are %1$d Doctors reports, %2$d Nurses reports, and %3$d Workers reports</string>
     <string name="message_saved_success">Saved Success</string>
+    <string name="label_start_date">Start Date</string>
+    <string name="label_end_date">End Date</string>
 </resources>

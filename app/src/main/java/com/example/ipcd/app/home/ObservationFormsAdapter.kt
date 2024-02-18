@@ -33,6 +33,7 @@ class ObservationFormsAdapter(
             binding.isReport = isReport
             binding.executePendingBindings()
 
+            binding.radioGroup.removeAllViews()
             observationForm.types.forEach {
                 binding.radioGroup.addView(RadioButton(context).apply {
                     id = it.getId()
@@ -52,6 +53,7 @@ class ObservationFormsAdapter(
                 binding.radioGroup.setOnCheckedChangeListener(null)
             }
 
+            binding.chipGroup.removeAllViews()
             observationForm.answers.forEach {
                 binding.chipGroup.addView(CheckBox(context).apply {
                     id = it.id
