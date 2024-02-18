@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [SavedFormEntity::class, SavedFormAnswers::class, AnswerEntity::class],
+    entities = [SavedFormEntity::class, SavedFormAnswersEntity::class, AnswerEntity::class],
     version = 1
 )
 abstract class AppDatabase : RoomDatabase() {

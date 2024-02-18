@@ -8,7 +8,7 @@ import com.example.ipcd.data.ObservationForm
 import com.example.ipcd.data.ObservationForm.Companion.FORMS_LIST
 import com.example.ipcd.data.Type
 import com.example.ipcd.database.AnswerEntity
-import com.example.ipcd.database.SavedFormAnswers
+import com.example.ipcd.database.SavedFormAnswersEntity
 import com.example.ipcd.database.SavedFormEntity
 import com.example.ipcd.database.getDatabase
 
@@ -67,7 +67,7 @@ class HomeViewModel : ViewModel() {
 
                     form.selectedAnswers.forEach { answer ->
                         database.savedFormsDao().insertSavedFormAnswers(
-                            SavedFormAnswers(
+                            SavedFormAnswersEntity(
                                 formId = insertedFormId.toInt(),
                                 answerId = answer.id
                             )

@@ -5,15 +5,27 @@ enum class Type {
         override fun getId(): Int {
             return 1
         }
-    }, Nurse {
+    },
+    Nurse {
         override fun getId(): Int {
             return 2
         }
-    }, Worker {
+    },
+    Worker {
         override fun getId(): Int {
             return 3
         }
     };
 
     abstract fun getId(): Int
+
+    companion object {
+        fun fromValue(value: Int): Type {
+            return when (value) {
+                1 -> Doctor
+                2 -> Nurse
+                else -> Worker
+            }
+        }
+    }
 }
