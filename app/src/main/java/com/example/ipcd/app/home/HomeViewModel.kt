@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.ipcd.MainApplication
 import com.example.ipcd.data.ObservationForm
+import com.example.ipcd.data.ObservationForm.Companion.FORMS_LIST
 import com.example.ipcd.data.Type
 import com.example.ipcd.database.AnswerEntity
 import com.example.ipcd.database.SavedFormAnswers
@@ -20,13 +21,7 @@ class HomeViewModel : ViewModel() {
         get() = _observationFormList
 
     init {
-        _observationFormList.value = listOf(
-            ObservationForm(1),
-            ObservationForm(2),
-            ObservationForm(3),
-            ObservationForm(4),
-            ObservationForm(5)
-        )
+        resetForms()
     }
 
     fun updateObservationFormAnswer(formId: Int, answer: AnswerEntity, isChecked: Boolean) {
@@ -67,7 +62,8 @@ class HomeViewModel : ViewModel() {
         _observationFormList.value?.let {
             it.forEach { form ->
                 form.selectedType?.let { type ->
-                    val insertedFormId = database.savedFormsDao().insertSavedForm(SavedFormEntity(type = type.getId()))
+                    val insertedFormId = database.savedFormsDao()
+                        .insertSavedForm(SavedFormEntity(type = type.getId()))
 
                     form.selectedAnswers.forEach { answer ->
                         database.savedFormsDao().insertSavedFormAnswers(
@@ -80,6 +76,12 @@ class HomeViewModel : ViewModel() {
 
                 }
             }
+
+            resetForms()
         }
+    }
+
+    private fun resetForms() {
+        _observationFormList.value = FORMS_LIST
     }
 }
