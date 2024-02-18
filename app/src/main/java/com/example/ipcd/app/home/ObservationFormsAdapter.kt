@@ -15,7 +15,8 @@ import com.example.ipcd.databinding.ItemObservationFormBinding
 class ObservationFormsAdapter(
     private val context: Context,
     private val onTypeClickListener: OnTypeClickListener,
-    private val onAnswerClickListener: OnAnswerClickListener
+    private val onAnswerClickListener: OnAnswerClickListener,
+    private val isReport: Boolean,
 ) :
     ListAdapter<ObservationForm, ObservationFormsAdapter.ViewHolder>(ObservationFormDiffCallback()) {
 
@@ -25,30 +26,45 @@ class ObservationFormsAdapter(
             observationForm: ObservationForm,
             onTypeClickListener: OnTypeClickListener,
             onAnswerClickListener: OnAnswerClickListener,
+            isReport: Boolean,
             context: Context,
         ) {
             binding.observationForm = observationForm
+            binding.isReport = isReport
             binding.executePendingBindings()
 
             observationForm.types.forEach {
                 binding.radioGroup.addView(RadioButton(context).apply {
                     id = it.getId()
                     text = it.name
+                    isEnabled = !isReport
+                    isChecked = observationForm.selectedType == it
                 })
             }
 
-            binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
-                onTypeClickListener.onClick(
-                    observationForm.id,
-                    Type.entries.first { it.getId() == checkedId })
+            if (!isReport) {
+                binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+                    onTypeClickListener.onClick(
+                        observationForm.id,
+                        Type.entries.first { it.getId() == checkedId })
+                }
+            } else {
+                binding.radioGroup.setOnCheckedChangeListener(null)
             }
 
             observationForm.answers.forEach {
                 binding.chipGroup.addView(CheckBox(context).apply {
                     id = it.id
                     text = it.text
-                    setOnCheckedChangeListener { _, isChecked ->
-                        onAnswerClickListener.onClick(observationForm.id, isChecked, it)
+                    isEnabled = !isReport
+                    isChecked = observationForm.selectedAnswers.contains(it)
+
+                    if (!isReport) {
+                        setOnCheckedChangeListener { _, isChecked ->
+                            onAnswerClickListener.onClick(observationForm.id, isChecked, it)
+                        }
+                    } else {
+                        setOnCheckedChangeListener(null)
                     }
                 })
             }
@@ -68,7 +84,13 @@ class ObservationFormsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position), onTypeClickListener, onAnswerClickListener, context)
+        holder.bind(
+            getItem(position),
+            onTypeClickListener,
+            onAnswerClickListener,
+            isReport,
+            context
+        )
     }
 }
 

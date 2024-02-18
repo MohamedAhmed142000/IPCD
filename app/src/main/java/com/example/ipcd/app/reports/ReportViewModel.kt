@@ -8,6 +8,7 @@ import com.example.ipcd.R
 import com.example.ipcd.data.ObservationForm
 import com.example.ipcd.data.Type
 import com.example.ipcd.database.getDatabase
+import java.util.Date
 
 class ReportViewModel : ViewModel() {
 
@@ -42,6 +43,7 @@ class ReportViewModel : ViewModel() {
             savedObservationForms.add(
                 ObservationForm(
                     id = it.id,
+                    date = Date(it.timestamp),
                     selectedType = Type.fromValue(it.type),
                     selectedAnswers = database.savedFormsDao().getSavedFormAnswers(it.id)
                         .toMutableList()
@@ -51,6 +53,6 @@ class ReportViewModel : ViewModel() {
 
         setStatisticsCount(savedObservationForms)
 
-        _observationFormList.value = savedObservationForms
+        _observationFormList.value = savedObservationForms.sortedByDescending { it.date.time }
     }
 }

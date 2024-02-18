@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         }
 
         formsAdapter =
-            ObservationFormsAdapter(requireContext(), onTypeClickListener, onAnswerClickListener)
+            ObservationFormsAdapter(requireContext(), onTypeClickListener, onAnswerClickListener, false)
         binding.recyclerView.adapter = formsAdapter
 
         homeViewModel.observationFormList.observe(viewLifecycleOwner) {

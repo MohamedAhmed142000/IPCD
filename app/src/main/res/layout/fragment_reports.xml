@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.ipcd.app.reports.ReportViewModel" />
@@ -20,10 +21,11 @@
             android:layout_height="75dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/logo_ipcd"
+            app:layout_constraintBottom_toTopOf="@+id/showDataButton"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <Button
             android:id="@+id/showDataButton"
@@ -33,7 +35,9 @@
             android:layout_marginTop="16dp"
             android:onClick="@{() -> viewModel.getAllSavedObservationForms()}"
             android:text="@string/action_show_data"
+            app:layout_constraintBottom_toTopOf="@+id/textViewResult"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
@@ -46,11 +50,32 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="16dp"
             android:text="@{viewModel.statisticsCount}"
-            android:textSize="16sp"
             android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/showDataButton" />
+            app:layout_constraintTop_toBottomOf="@+id/showDataButton"
+            tools:text="There are 8 Doctors reports, 10 Nurses reports, and 3 Workers reports" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewResult"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_observation_form" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

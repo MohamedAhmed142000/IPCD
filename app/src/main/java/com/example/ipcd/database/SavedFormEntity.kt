@@ -9,9 +9,11 @@ import androidx.room.PrimaryKey
 data class SavedFormEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo val type: Int,
+    @ColumnInfo val timestamp: Long
 ) {
     constructor(type: Int) : this(
         0,
-        type
+        type,
+        System.currentTimeMillis()
     )
 }
