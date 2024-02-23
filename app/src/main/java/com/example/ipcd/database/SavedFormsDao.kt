@@ -18,6 +18,9 @@ interface SavedFormsDao {
     @Query("select answers.* from answers, saved_form_answers where answers.id = saved_form_answers.answer_id and saved_form_answers.form_id = :formId")
     fun getSavedFormAnswers(formId: Int): List<AnswerEntity>
 
+    @Query("select saved_form_answers.* from saved_form_answers")
+    fun getAllSavedFormAnswers(): List<SavedFormAnswersEntity>
+
     @Query("select saved_forms.* from saved_forms")
     fun getAllSavedForms(): List<SavedFormEntity>
 }

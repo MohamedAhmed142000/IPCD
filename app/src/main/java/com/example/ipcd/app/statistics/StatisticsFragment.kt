@@ -1,35 +1,34 @@
-package com.example.ipcd.app.reports
+package com.example.ipcd.app.statistics
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.ipcd.app.home.ObservationFormsAdapter
-import com.example.ipcd.app.home.OnAnswerClickListener
-import com.example.ipcd.app.home.OnTypeClickListener
 import com.example.ipcd.data.Type
-import com.example.ipcd.databinding.FragmentReportsBinding
+import com.example.ipcd.databinding.FragmentStatisticsBinding
 import java.util.Calendar
 
+class StatisticsFragment : Fragment() {
 
-class ReportsFragment : Fragment() {
+    private val statisticsViewModel by lazy { ViewModelProvider(this)[StatisticsViewModel::class.java] }
 
-    private val reportsVideModel by lazy { ViewModelProvider(this)[ReportViewModel::class.java] }
-
-    private lateinit var formsAdapter: ObservationFormsAdapter
+    private lateinit var answerStatisticsAdapter: AnswerStatisticsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentReportsBinding.inflate(inflater, container, false)
+        val binding = FragmentStatisticsBinding.inflate(inflater, container, false)
+        binding.viewModel = statisticsViewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.viewModel = reportsVideModel
         binding.executePendingBindings()
+
+        answerStatisticsAdapter = AnswerStatisticsAdapter()
+        binding.recyclerView.adapter = answerStatisticsAdapter
 
         val calender = Calendar.getInstance()
         val cYear = calender.get(Calendar.YEAR)
@@ -43,7 +42,7 @@ class ReportsFragment : Fragment() {
                 calender.set(Calendar.MONTH, monthOfYear)
                 calender.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-                reportsVideModel.updateStartDate(calender.time)
+                statisticsViewModel.updateStartDate(calender.time)
             },
             cYear,
             cMonth,
@@ -58,7 +57,7 @@ class ReportsFragment : Fragment() {
                 calender.set(Calendar.MONTH, monthOfYear)
                 calender.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-                reportsVideModel.updateEndDate(calender.time)
+                statisticsViewModel.updateEndDate(calender.time)
             },
             cYear,
             cMonth,
@@ -66,32 +65,9 @@ class ReportsFragment : Fragment() {
         )
         binding.textViewEndDate.setOnClickListener { endDateDialog.show() }
 
-        Type.entries.forEach {
-            binding.chipGroup.addView(CheckBox(requireContext()).apply {
-                id = it.getId()
-                text = it.name
-                isChecked = true
-                setOnCheckedChangeListener { _, isChecked ->
-                    reportsVideModel.updateTypesFilters(it, isChecked)
-                }
-            })
-        }
-
-        val onAnswerClickListener = OnAnswerClickListener { _, _, _ -> }
-        val onTypeClickListener = OnTypeClickListener { _, _ -> }
-
-        formsAdapter =
-            ObservationFormsAdapter(
-                requireContext(),
-                onTypeClickListener,
-                onAnswerClickListener,
-                true
-            )
-        binding.recyclerView.adapter = formsAdapter
-
-        reportsVideModel.observationFormList.observe(viewLifecycleOwner) {
+        statisticsViewModel.answersStatistics.observe(viewLifecycleOwner) {
             if (it != null) {
-                formsAdapter.submitList(it)
+                answerStatisticsAdapter.submitList(it)
             }
         }
 

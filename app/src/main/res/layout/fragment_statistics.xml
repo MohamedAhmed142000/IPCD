@@ -7,14 +7,14 @@
 
         <variable
             name="viewModel"
-            type="com.example.ipcd.app.reports.ReportViewModel" />
+            type="com.example.ipcd.app.statistics.StatisticsViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        tools:context=".app.reports.ReportsFragment">
+        tools:context=".app.statistics.StatisticsFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -47,11 +47,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chipGroup"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
                 <TextView
                     android:id="@+id/textView_startDate"
                     android:layout_width="match_parent"
@@ -76,30 +71,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="64dp"
                 android:layout_marginVertical="8dp"
-                android:onClick="@{() -> viewModel.getAllSavedObservationForms()}"
+                android:onClick="@{() -> viewModel.getData()}"
                 android:text="@string/action_show_data"
-                app:layout_constraintBottom_toTopOf="@+id/textViewResult"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-            <TextView
-                android:id="@+id/textViewResult"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginHorizontal="20dp"
-                android:text="@{viewModel.statisticsCount}"
-                android:textAlignment="center"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/recyclerView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showDataButton"
-                tools:text="There are 8 Doctors reports, 10 Nurses reports, and 3 Workers reports" />
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -112,11 +90,10 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewResult"
-                tools:itemCount="1"
-                tools:listitem="@layout/item_observation_form" />
+                app:layout_constraintTop_toBottomOf="@+id/showDataButton"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_answer_statistics" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

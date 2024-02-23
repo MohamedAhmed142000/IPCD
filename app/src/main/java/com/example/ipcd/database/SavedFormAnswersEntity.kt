@@ -9,9 +9,11 @@ data class SavedFormAnswersEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
     @ColumnInfo(name = "form_id") val formId: Int,
     @ColumnInfo(name = "answer_id") val answerId: Int,
-) {
-    constructor(formId: Int, answerId: Int) : this(
+    @ColumnInfo(name = "type") val type: Int,
+    @ColumnInfo(name = "timestamp") val timestamp: Long,
+    ) {
+    constructor(formId: Int, answerId: Int, type: Int) : this(
         0,
-        formId, answerId
+        formId, answerId, type, System.currentTimeMillis()
     )
 }

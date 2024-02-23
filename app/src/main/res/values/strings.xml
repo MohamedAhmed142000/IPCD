@@ -3,8 +3,6 @@
     <string name="email">Email</string>
     <string name="password">password</string>
     <string name="login">Log in</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="name_hospital">Name  Hospital</string>
     <string name="enter_url">Enter URL</string>
     <string name="generate_qr_code">Generate QR Code</string>
@@ -20,4 +18,12 @@
     <string name="message_saved_success">Saved Success</string>
     <string name="label_start_date">Start Date</string>
     <string name="label_end_date">End Date</string>
+
+    <string name="value_answer_total_count">%1$s total number %2$d</string>
+    <string name="value_doctors_count">%1$d filled by Doctors = %2$s%%</string>
+    <string name="value_nurses_count">%1$d filled by Nurses = %2$s%%</string>
+    <string name="value_workers_count">%1$d filled by Workers = %2$s%%</string>
+    <string name="nav_item_statistics">Statistics</string>
+    <string name="nav_item_reports">Reports</string>
+    <string name="nav_item_home">Home</string>
 </resources>
