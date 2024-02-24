@@ -8,11 +8,16 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.ipcd.R
 import com.example.ipcd.app.home.ObservationFormsAdapter
 import com.example.ipcd.app.home.OnAnswerClickListener
 import com.example.ipcd.app.home.OnTypeClickListener
 import com.example.ipcd.data.Type
 import com.example.ipcd.databinding.FragmentReportsBinding
+import com.gkemon.XMLtoPDF.PdfGenerator
+import com.gkemon.XMLtoPDF.PdfGeneratorListener
+import com.gkemon.XMLtoPDF.model.FailureResponse
+import com.gkemon.XMLtoPDF.model.SuccessResponse
 import java.util.Calendar
 
 
@@ -87,12 +92,37 @@ class ReportsFragment : Fragment() {
                 onAnswerClickListener,
                 true
             )
-        binding.recyclerView.adapter = formsAdapter
+        binding.recyclerViewReports.adapter = formsAdapter
 
         reportsVideModel.observationFormList.observe(viewLifecycleOwner) {
             if (it != null) {
                 formsAdapter.submitList(it)
             }
+        }
+
+        val pdfGeneratorListener = object : PdfGeneratorListener(){
+            override fun onStartPDFGeneration() {
+            }
+
+            override fun onFinishPDFGeneration() {
+            }
+
+            override fun onFailure(failureResponse: FailureResponse?) {
+            }
+
+            override fun onSuccess(response: SuccessResponse?) {
+            }
+
+        }
+
+        binding.printDataButton.setOnClickListener {
+            PdfGenerator.getBuilder().setContext(requireActivity())
+                .fromViewIDSource()
+                .fromViewID(requireActivity(), R.id.recyclerView_reports)
+                .setFileName("Reports")
+                .setFolderNameOrPath("PDFs")
+                .actionAfterPDFGeneration(PdfGenerator.ActionAfterPDFGeneration.SHARE)
+                .build(pdfGeneratorListener)
         }
 
         return binding.root

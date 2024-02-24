@@ -71,7 +71,9 @@ class ReportViewModel : ViewModel() {
             if (_filterStartDate.value != null && _filterEndDate.value != null) {
                 filteredList.filter {
                     removeHoursFromDate(it.date)?.let { date ->
-                        date.time <= removeHoursFromDate(_filterEndDate.value!!)!!.time && date.time >= removeHoursFromDate(_filterStartDate.value!!)!!.time
+                        date.time <= removeHoursFromDate(_filterEndDate.value!!)!!.time && date.time >= removeHoursFromDate(
+                            _filterStartDate.value!!
+                        )!!.time
                     } ?: false
                 }
             } else {
