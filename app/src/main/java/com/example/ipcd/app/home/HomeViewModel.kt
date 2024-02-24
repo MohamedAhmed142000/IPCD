@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.ipcd.MainApplication
 import com.example.ipcd.data.ObservationForm
-import com.example.ipcd.data.ObservationForm.Companion.FORMS_LIST
 import com.example.ipcd.data.Type
 import com.example.ipcd.database.AnswerEntity
 import com.example.ipcd.database.SavedFormAnswersEntity
@@ -63,9 +62,11 @@ class HomeViewModel : ViewModel() {
     }
 
     fun save() {
+        var isSaveSuccess = false
         _observationFormList.value?.let {
             it.forEach { form ->
                 form.selectedType?.let { type ->
+                    isSaveSuccess = true
                     val insertedFormId = database.savedFormsDao()
                         .insertSavedForm(SavedFormEntity(type = type.getId()))
 
@@ -82,8 +83,10 @@ class HomeViewModel : ViewModel() {
                 }
             }
 
-            _savedSuccess.value = true
-            resetForms()
+            _savedSuccess.value = isSaveSuccess
+            if (isSaveSuccess) {
+                resetForms()
+            }
         }
     }
 
@@ -91,7 +94,7 @@ class HomeViewModel : ViewModel() {
         _savedSuccess.value = false
     }
 
-    private fun resetForms() {
-        _observationFormList.value = FORMS_LIST
+    fun resetForms() {
+        _observationFormList.value = ObservationForm.getFormsList()
     }
 }

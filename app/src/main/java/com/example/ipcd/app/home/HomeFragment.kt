@@ -14,7 +14,6 @@ class HomeFragment : Fragment() {
 
     private val homeViewModel by lazy { ViewModelProvider(this)[HomeViewModel::class.java] }
 
-
     private lateinit var formsAdapter: ObservationFormsAdapter
 
     override fun onCreateView(
@@ -56,6 +55,8 @@ class HomeFragment : Fragment() {
                     requireContext(),
                     getString(R.string.message_saved_success), Toast.LENGTH_SHORT
                 ).show()
+
+                homeViewModel.resetForms()
                 homeViewModel.onSavedSuccessDone()
             }
         }

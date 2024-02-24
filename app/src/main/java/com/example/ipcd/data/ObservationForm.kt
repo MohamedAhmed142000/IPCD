@@ -15,7 +15,7 @@ class ObservationForm(
     val selectedAnswers: MutableList<AnswerEntity> = mutableListOf()
 ) {
     companion object {
-        val FORMS_LIST = listOf(
+        fun getFormsList(): List<ObservationForm> = listOf(
             ObservationForm(1),
             ObservationForm(2),
             ObservationForm(3),
