@@ -72,6 +72,7 @@ class HomeViewModel : ViewModel() {
                     form.selectedAnswers.forEach { answer ->
                         database.savedFormsDao().insertSavedFormAnswers(
                             SavedFormAnswersEntity(
+                                type = type.getId(),
                                 formId = insertedFormId.toInt(),
                                 answerId = answer.id
                             )

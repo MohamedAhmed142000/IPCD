@@ -3,16 +3,16 @@
     >
     <item
         android:id="@+id/menu_item1"
-        android:title="Home"
+        android:title="@string/nav_item_home"
         android:icon="@drawable/logo_ipcd" />
 
     <item
         android:id="@+id/menu_item2"
-        android:title="Reports"
+        android:title="@string/nav_item_reports"
         android:icon="@drawable/logo_ipcd" />
     <item
         android:id="@+id/menu_item3"
-        android:title="Profile"
+        android:title="@string/nav_item_statistics"
         android:icon="@drawable/logo_ipcd" />
     <!-- Add more items as needed -->
 </menu>
