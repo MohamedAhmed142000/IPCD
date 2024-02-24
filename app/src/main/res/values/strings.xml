@@ -20,4 +20,18 @@
     <string name="message_saved_success">Saved Success</string>
     <string name="label_start_date">Start Date</string>
     <string name="label_end_date">End Date</string>
+    <string name="button_print_report">Print Report</string>
+    <string name="doctors">Doctors</string>
+    <string name="nurses">Nurses</string>
+    <string name="workers">Workers</string>
+    <string name="general_answer_counter">General Answer Counter :</string>
+    <string name="bef_pat">bef-pat</string>
+    <string name="bef_asept">bef-asept</string>
+    <string name="aft_b_f">aft-b-f</string>
+    <string name="aft_pat">aft-pat</string>
+    <string name="aft_p_surr">aft-p-surr</string>
+    <string name="hr">HR</string>
+    <string name="hw">HW</string>
+    <string name="missed">Missed</string>
+    <string name="compliance">Compliance:</string>
 </resources>

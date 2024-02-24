@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.ipcd.app.home.MainActivity
 import com.example.ipcd.R
-import com.example.ipcd.UserActivity
 import com.example.ipcd.databinding.LoginActivityBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -34,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
                 onLoginSuccess(it)
             }
         }
+
         loginViewModel.showError.observe(this) {
             if (it != null) {
                 Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
@@ -45,7 +45,7 @@ class LoginActivity : AppCompatActivity() {
         val intent = if (isAdmin) {
             Intent(this@LoginActivity, MainActivity::class.java)
         } else {
-            Intent(this@LoginActivity, UserActivity::class.java)
+            Intent(this@LoginActivity, MainActivity::class.java)
         }
 
         startActivity(intent)
@@ -56,4 +56,12 @@ class LoginActivity : AppCompatActivity() {
             Toast.LENGTH_SHORT
         ).show()
     }
+
+//    override fun onStart() {
+//        super.onStart()
+//            val intent=Intent(this, MainActivity::class.java)
+//        startActivity(intent)
+//        }
+
+
 }

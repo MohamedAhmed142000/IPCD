@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.example.ipcd.R
-import com.example.ipcd.app.profile.ProfileFragment
+import com.example.ipcd.app.sheet.SheetFragment
 import com.example.ipcd.app.reports.ReportsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
 
             R.id.menu_item3 -> {
-                loadFragment(ProfileFragment())
+                loadFragment(SheetFragment())
                 return true
             }
         }
@@ -46,4 +46,5 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         transaction.replace(R.id.container, fragment)
         transaction.commit()
     }
+
 }
