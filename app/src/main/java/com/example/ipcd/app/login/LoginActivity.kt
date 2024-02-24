@@ -56,12 +56,4 @@ class LoginActivity : AppCompatActivity() {
             Toast.LENGTH_SHORT
         ).show()
     }
-
-//    override fun onStart() {
-//        super.onStart()
-//            val intent=Intent(this, MainActivity::class.java)
-//        startActivity(intent)
-//        }
-
-
 }

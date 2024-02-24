@@ -40,4 +40,5 @@
     <string name="nav_item_statistics">Statistics</string>
     <string name="nav_item_reports">Reports</string>
     <string name="nav_item_home">Home</string>
+    <string name="action_logout">Logout\n</string>
 </resources>

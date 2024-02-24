@@ -48,17 +48,18 @@ class LoginViewModel : ViewModel() {
     }
 
     fun login() {
-        if (isValidCredentials(username, password)) {
-            val role = isAdminUser(username)
-            _loggedInSuccess.value = role
+        val doctor = isValidCredentials(username, password)
+        if (doctor != null) {
+            Doctor.saveLoggedInDoctor(doctor)
+            _loggedInSuccess.value = isAdminUser(username)
         } else {
             _showError.value = "wrong credentials"
         }
     }
 
-    private fun isValidCredentials(username: String, password: String): Boolean {
+    private fun isValidCredentials(username: String, password: String): Doctor? {
         // Replace this with your validation logic (e.g., check against a local database)
-        return Doctor.DOCTORS_LIST.any { user -> user.username == username && user.password == password }
+        return Doctor.DOCTORS_LIST.firstOrNull { user -> user.username == username && user.password == password }
     }
 
     private fun isAdminUser(username: String): Boolean {

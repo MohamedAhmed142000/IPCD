@@ -46,6 +46,8 @@ dependencies {
     // ViewModel and LiveData (arch components)
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
     implementation ("androidx.lifecycle:lifecycle-livedata-core-ktx:2.5.1")
+    implementation("androidx.preference:preference-ktx:1.2.1")
+    implementation ("com.google.code.gson:gson:2.10")
 
     // Room
     val room_version = "2.6.1"
