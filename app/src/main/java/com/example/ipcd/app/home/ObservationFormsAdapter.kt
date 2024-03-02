@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.RadioButton
+import androidx.core.view.forEach
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,16 @@ class ObservationFormsAdapter(
 
     class ViewHolder(private val binding: ItemObservationFormBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        private fun disableOtherRadioButtons(checkBox: CheckBox) {
+            binding.chipGroup.forEach { view ->
+                if (view is CheckBox && view != checkBox) {
+                    view.isEnabled = false
+                }
+            }
+
+
+        }
+
         fun bind(
             observationForm: ObservationForm,
             onTypeClickListener: OnTypeClickListener,
@@ -53,22 +64,37 @@ class ObservationFormsAdapter(
                 binding.radioGroup.setOnCheckedChangeListener(null)
             }
 
+            var lastselectedCheckBox: CheckBox? = null
             binding.chipGroup.removeAllViews()
-            observationForm.answers.forEach {
-                binding.chipGroup.addView(CheckBox(context).apply {
-                    id = it.id
-                    text = it.text
+            observationForm.answers.forEachIndexed { answerIndex, answer ->
+                val isLastElement = answerIndex == observationForm.answers.size - 1
+
+                val checkBox = CheckBox(context).apply{
+                    id = answer.id
+                    text = answer.text
                     isEnabled = !isReport
-                    isChecked = observationForm.selectedAnswers.contains(it)
+                    isChecked = observationForm.selectedAnswers.contains(answer)
 
                     if (!isReport) {
                         setOnCheckedChangeListener { _, isChecked ->
-                            onAnswerClickListener.onClick(observationForm.id, isChecked, it)
+                            onAnswerClickListener.onClick(observationForm.id, isChecked, answer)
+                            if (isChecked) {
+                                // Deselect the last selected radio button if it's not the last element
+                                if (!isLastElement && lastselectedCheckBox != null) {
+                                    lastselectedCheckBox?.isChecked = false
+                                }
+                                lastselectedCheckBox = this
+                            }
+                            // Disable other radio buttons if this is the last element
+                            if (isLastElement) {
+                                disableOtherRadioButtons(this)
+                            }
                         }
                     } else {
                         setOnCheckedChangeListener(null)
                     }
-                })
+                }
+                binding.chipGroup.addView(checkBox)
             }
         }
 
