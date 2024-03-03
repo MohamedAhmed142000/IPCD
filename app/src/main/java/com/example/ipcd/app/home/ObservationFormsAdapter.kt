@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.RadioButton
 import androidx.core.view.forEach
+import androidx.core.view.forEachIndexed
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -23,16 +24,44 @@ class ObservationFormsAdapter(
 
     class ViewHolder(private val binding: ItemObservationFormBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        private fun disableOtherRadioButtons(checkBox: CheckBox) {
+        private fun disableOtherButtonswhenselectmissed(checkBox: CheckBox) {
             binding.chipGroup.forEach { view ->
                 if (view is CheckBox && view != checkBox) {
                     view.isEnabled = false
+                    view.isChecked=false
                 }
             }
-
-
         }
+        private fun disableOtherthefirstfiveelements(clickedCheckBox: CheckBox, observationForm: ObservationForm, disable: Boolean) {
+            binding.chipGroup.forEachIndexed { index, view ->
+                if (view is CheckBox) {
+                    // Check if it's within the first five elements
+                    val isWithinFirstFive = index < 5
+                    if (isWithinFirstFive && view != clickedCheckBox) {
+                        view.isChecked = !disable
+                        // You might also want to uncheck it, depends on your logic
+                        // view.isChecked = false
+                    }
+                }
+            }
+        }
+        private fun disableHRandHWButtons(clickedCheckBox: CheckBox, observationForm: ObservationForm, disable: Boolean) {
+            binding.chipGroup.forEachIndexed { index, view ->
+                if (view is CheckBox) {
+                    // Check if it's within the HR and HW  elements
+                    val isWithinHRElement = index == 5
+                    val isWithinHWElement = index == 6
+                    if (isWithinHRElement && view != clickedCheckBox) {
+                        view.isChecked = !disable
+                        // You might also want to uncheck it, depends on your logic
+                        // view.isChecked = false
+                    }else if (isWithinHWElement&&view!=clickedCheckBox){
+                        view.isChecked = !disable
 
+                    }
+                }
+            }
+        }
         fun bind(
             observationForm: ObservationForm,
             onTypeClickListener: OnTypeClickListener,
@@ -68,8 +97,10 @@ class ObservationFormsAdapter(
             binding.chipGroup.removeAllViews()
             observationForm.answers.forEachIndexed { answerIndex, answer ->
                 val isLastElement = answerIndex == observationForm.answers.size - 1
-
-                val checkBox = CheckBox(context).apply{
+                val isWithinFirstFive = answerIndex < 5
+                val isWithinHRElement = answerIndex == 5
+                val isWithinHWElement = answerIndex == 6
+                val checkBox = CheckBox(context).apply {
                     id = answer.id
                     text = answer.text
                     isEnabled = !isReport
@@ -83,12 +114,18 @@ class ObservationFormsAdapter(
                                 if (!isLastElement && lastselectedCheckBox != null) {
                                     lastselectedCheckBox?.isChecked = false
                                 }
-                                lastselectedCheckBox = this
                             }
                             // Disable other radio buttons if this is the last element
                             if (isLastElement) {
-                                disableOtherRadioButtons(this)
+                                disableOtherButtonswhenselectmissed(this)
                             }
+                            if (isWithinFirstFive && isChecked) {
+                                disableOtherthefirstfiveelements(this, observationForm, true)
+                            }
+                            if (isWithinHRElement && isChecked||isWithinHWElement&&isChecked) {
+                                disableHRandHWButtons(this, observationForm, true)
+                            }
+
                         }
                     } else {
                         setOnCheckedChangeListener(null)
@@ -97,6 +134,8 @@ class ObservationFormsAdapter(
                 binding.chipGroup.addView(checkBox)
             }
         }
+
+
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
