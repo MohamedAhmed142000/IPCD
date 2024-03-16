@@ -8,14 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import androidx.lifecycle.ViewModelProvider
+import com.example.ipcd.R
 import com.example.ipcd.data.Type
 import com.example.ipcd.databinding.FragmentStatisticsBinding
+import com.gkemon.XMLtoPDF.PdfGenerator
+import com.gkemon.XMLtoPDF.PdfGeneratorListener
+import com.gkemon.XMLtoPDF.model.FailureResponse
+import com.gkemon.XMLtoPDF.model.SuccessResponse
 import java.util.Calendar
 
 class StatisticsFragment : Fragment() {
 
     private val statisticsViewModel by lazy { ViewModelProvider(this)[StatisticsViewModel::class.java] }
-
     private lateinit var answerStatisticsAdapter: AnswerStatisticsAdapter
 
     override fun onCreateView(
@@ -69,6 +73,30 @@ class StatisticsFragment : Fragment() {
             if (it != null) {
                 answerStatisticsAdapter.submitList(it)
             }
+        }
+        val pdfGeneratorListener = object : PdfGeneratorListener() {
+            override fun onStartPDFGeneration() {
+            }
+
+            override fun onFinishPDFGeneration() {
+            }
+
+            override fun onFailure(failureResponse: FailureResponse?) {
+            }
+
+            override fun onSuccess(response: SuccessResponse?) {
+            }
+
+        }
+
+        binding.printDataButton.setOnClickListener {
+            PdfGenerator.getBuilder().setContext(requireActivity())
+                .fromViewIDSource()
+                .fromViewID(requireActivity(), R.id.recyclerView)
+                .setFileName("Statistics")
+                .setFolderNameOrPath("PDFs")
+                .actionAfterPDFGeneration(PdfGenerator.ActionAfterPDFGeneration.OPEN)
+                .build(pdfGeneratorListener)
         }
 
         return binding.root
