@@ -121,7 +121,7 @@ class ReportsFragment : Fragment() {
                 .fromViewID(requireActivity(), R.id.recyclerView_reports)
                 .setFileName("Reports")
                 .setFolderNameOrPath("PDFs")
-                .actionAfterPDFGeneration(PdfGenerator.ActionAfterPDFGeneration.SHARE)
+                .actionAfterPDFGeneration(PdfGenerator.ActionAfterPDFGeneration.OPEN)
                 .build(pdfGeneratorListener)
         }
 
