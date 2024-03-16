@@ -4,15 +4,15 @@
     <item
         android:id="@+id/menu_item1"
         android:title="@string/nav_item_home"
-        android:icon="@drawable/logo_ipcd" />
+        android:icon="@drawable/home_work" />
 
     <item
         android:id="@+id/menu_item2"
         android:title="@string/nav_item_reports"
-        android:icon="@drawable/logo_ipcd" />
+        android:icon="@drawable/report_logo" />
     <item
         android:id="@+id/menu_item3"
         android:title="@string/nav_item_statistics"
-        android:icon="@drawable/logo_ipcd" />
+        android:icon="@drawable/statistics_logo" />
     <!-- Add more items as needed -->
 </menu>
