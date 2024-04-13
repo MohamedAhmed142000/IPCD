@@ -31,21 +31,33 @@ class StatisticsViewModel : ViewModel() {
         val allAnswers = database.savedFormsDao().getAllAnswers()
 
         val filteredList = if (_filterStartDate.value != null && _filterEndDate.value != null) {
-            allSavedAnswers.filter { removeHoursFromDate(Date(it.timestamp))?.let { date ->
-                date.time <= removeHoursFromDate(_filterEndDate.value!!)!!.time && date.time >= removeHoursFromDate(_filterStartDate.value!!)!!.time
-            } ?: false }
+            allSavedAnswers.filter {
+                removeHoursFromDate(Date(it.timestamp))?.let { date ->
+                    date.time <= removeHoursFromDate(_filterEndDate.value!!)!!.time && date.time >= removeHoursFromDate(
+                        _filterStartDate.value!!
+                    )!!.time
+                } ?: false
+            }
         } else allSavedAnswers
 
         val answersStatistics = mutableListOf<AnswerStatistics>()
-
-        allAnswers.forEach { answer ->
+        var HR = 0
+        var HW = 0
+        var Missed = 0
+        allAnswers.forEachIndexed { _, answer ->
+            val missedAnswers = allAnswers.filter { it.text == "missed" }
             val doctorsCount =
                 filteredList.count { answer.id == it.answerId && it.type == Type.Doctor.getId() }
             val nursesCount =
                 filteredList.count { answer.id == it.answerId && it.type == Type.Nurse.getId() }
             val workersCount =
                 filteredList.count { answer.id == it.answerId && it.type == Type.Worker.getId() }
-
+            HR +=
+                filteredList.count { answer.id == it.answerId && answer.text == "HR" }
+            HW +=
+                filteredList.count { answer.id == it.answerId && answer.text == "HW" }
+            Missed +=
+                missedAnswers.size
             answersStatistics.add(
                 AnswerStatistics(
                     answerId = answer.id,
@@ -53,7 +65,10 @@ class StatisticsViewModel : ViewModel() {
                     doctorsCount = doctorsCount,
                     nursesCount = nursesCount,
                     workersCount = workersCount,
-                    totalCount = filteredList.count { answer.id == it.answerId }
+                    totalCount = missedAnswers.size,
+                    HR = HR,
+                    HW = HW,
+                    Missed = Missed,
                 )
             )
         }
