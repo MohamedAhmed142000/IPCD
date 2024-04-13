@@ -31,15 +31,20 @@
     <string name="hr">HR</string>
     <string name="hw">HW</string>
     <string name="missed">Missed</string>
-    <string name="compliance">Compliance:</string>
 
     <string name="value_answer_total_count">%1$s total number %2$d</string>
     <string name="value_doctors_count">%1$d filled by Doctors = %2$s%%</string>
     <string name="value_nurses_count">%1$d filled by Nurses = %2$s%%</string>
     <string name="value_workers_count">%1$d filled by Workers = %2$s%%</string>
+    <string name="value_of_equation_of_HR">HR = %1$s%%</string>
     <string name="nav_item_statistics">Statistics</string>
     <string name="nav_item_reports">Reports</string>
     <string name="nav_item_home">Home</string>
     <string name="action_logout">Logout\n</string>
     <string name="action_print_data">Print Data</string>
+
+    <string name="value_hr_percentage">%1$d  HR  (%2$s%%)</string>
+    <string name="value_hw_percentage">%1$d  HW   (%2$s%%)</string>
+    <string name="value_combined_percentage">%1$d  HR+HW  (%2$s%%)</string>
+
 </resources>
