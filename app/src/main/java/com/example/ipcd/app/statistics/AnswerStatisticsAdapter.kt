@@ -15,8 +15,10 @@ class AnswerStatisticsAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
             answerStatistics: AnswerStatistics,
+            isLastItem: Boolean
         ) {
             binding.item = answerStatistics
+            binding.isLastItem = isLastItem
             binding.executePendingBindings()
         }
 
@@ -34,8 +36,19 @@ class AnswerStatisticsAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val currentItem = getItemOrNull(position) // Get item or null to handle empty lists
+        val isLastItem = position == itemCount - 1
+        currentItem?.let { holder.bind(it, isLastItem) }
     }
+
+    private fun getItemOrNull(position: Int): AnswerStatistics? {
+        return if (position in 7 until itemCount) {
+            getItem(position)
+        } else {
+        null// Return null if position is out of bounds
+        }
+    }
+
 }
 
 class AnswerStatisticsDiffCallback : DiffUtil.ItemCallback<AnswerStatistics>() {
