@@ -8,6 +8,10 @@
         <variable
             name="item"
             type="com.example.ipcd.data.AnswerStatistics" />
+
+        <variable
+            name="isLastItem"
+            type="Boolean" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -26,29 +30,25 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{item.getTotal()}"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                tools:text="answerText total number totalCount" />
+                android:fontFamily="20"
+                android:text="@{item.HRPercentage}" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{item.doctorsPercentage}" />
+                android:fontFamily="20"
+                android:text="@{item.HWPercentage}" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{item.nursesPercentage}" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@{item.workersPercentage}" />
+                android:fontFamily="20"
+                android:text="@{item.combinedPercentage}" />
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
 
 </layout>
 
