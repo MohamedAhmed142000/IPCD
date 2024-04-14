@@ -36,19 +36,9 @@ class AnswerStatisticsAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val currentItem = getItemOrNull(position) // Get item or null to handle empty lists
         val isLastItem = position == itemCount - 1
-        currentItem?.let { holder.bind(it, isLastItem) }
+        holder.bind(getItem(position), isLastItem)
     }
-
-    private fun getItemOrNull(position: Int): AnswerStatistics? {
-        return if (position in 7 until itemCount) {
-            getItem(position)
-        } else {
-        null// Return null if position is out of bounds
-        }
-    }
-
 }
 
 class AnswerStatisticsDiffCallback : DiffUtil.ItemCallback<AnswerStatistics>() {

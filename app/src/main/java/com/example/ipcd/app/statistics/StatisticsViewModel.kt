@@ -1,5 +1,6 @@
 package com.example.ipcd.app.statistics
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,11 +41,15 @@ class StatisticsViewModel : ViewModel() {
             }
         } else allSavedAnswers
 
+        val filteredAnswers = allAnswers.filter { it.id >= 6 }
+
+        Log.i("ZZZ", "allAnswers: $filteredAnswers")
+
         val answersStatistics = mutableListOf<AnswerStatistics>()
         var HR = 0
         var HW = 0
         var Missed = 0
-        allAnswers.forEachIndexed { _, answer ->
+        filteredAnswers.forEachIndexed { _, answer ->
             val missedAnswers = allAnswers.filter { it.text == "missed" }
             val doctorsCount =
                 filteredList.count { answer.id == it.answerId && it.type == Type.Doctor.getId() }
@@ -73,7 +78,9 @@ class StatisticsViewModel : ViewModel() {
             )
         }
 
-        _answersStatistics.value = answersStatistics
+        Log.i("ZZZ", "answersStatistics: $answersStatistics")
+
+        _answersStatistics.value = listOf(answersStatistics.last())
     }
 
     fun updateStartDate(startDate: Date) {
