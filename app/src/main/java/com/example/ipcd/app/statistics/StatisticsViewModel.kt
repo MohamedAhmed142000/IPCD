@@ -1,6 +1,5 @@
 package com.example.ipcd.app.statistics
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -43,8 +42,6 @@ class StatisticsViewModel : ViewModel() {
 
         val filteredAnswers = allAnswers.filter { it.id >= 6 }
 
-        Log.i("ZZZ", "allAnswers: $filteredAnswers")
-
         val answersStatistics = mutableListOf<AnswerStatistics>()
         var HR = 0
         var HW = 0
@@ -77,8 +74,6 @@ class StatisticsViewModel : ViewModel() {
                 )
             )
         }
-
-        Log.i("ZZZ", "answersStatistics: $answersStatistics")
 
         _answersStatistics.value = listOf(answersStatistics.last())
     }
