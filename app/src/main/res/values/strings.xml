@@ -31,7 +31,7 @@
     <string name="hr">HR</string>
     <string name="hw">HW</string>
     <string name="missed">Missed</string>
-
+    <string name="value_statistics_counter"> * There are %1$d HR chooses, %2$d HW chooses, and %3$d Missed chooses </string>
     <string name="value_answer_total_count">%1$s total number %2$d</string>
     <string name="value_doctors_count">%1$d filled by Doctors = %2$s%%</string>
     <string name="value_nurses_count">%1$d filled by Nurses = %2$s%%</string>
@@ -43,8 +43,8 @@
     <string name="action_logout">Logout\n</string>
     <string name="action_print_data">Print Data</string>
 
-    <string name="value_hr_percentage">%1$d  HR  (%2$s%%)</string>
-    <string name="value_hw_percentage">%1$d  HW   (%2$s%%)</string>
-    <string name="value_combined_percentage">%1$d  HR+HW  (%2$s%%)</string>
+    <string name="value_hr_percentage">     -* %1$d  HR , HR percentage = (%2$s%%)</string>
+    <string name="value_hw_percentage">     -* %1$d  HW   , HW percentage = (%2$s%%)</string>
+    <string name="value_combined_percentage">      -* %1$d  HR+HW  , HR + HW percentage = (%2$s%%)</string>
 
 </resources>

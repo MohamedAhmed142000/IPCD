@@ -6,16 +6,21 @@ import com.example.ipcd.R
 data class AnswerStatistics(
     val answerId: Int,
     val answerText: String,
-    val totalCount: Int,
-    val doctorsCount: Int,
-    val nursesCount: Int,
-    val workersCount: Int,
     var HR: Int,
     var HW: Int,
     var Missed: Int
-) {
-    private val resources = MainApplication.instance.resources
 
+
+) {
+
+    private val resources = MainApplication.instance.resources
+    fun getStatisticsCount() :String=
+        resources.getString(
+            R.string.value_statistics_counter,
+            HR,
+            HW,
+            Missed
+        )
     fun getHRPercentage(): String =
         resources.getString(
             R.string.value_hr_percentage,

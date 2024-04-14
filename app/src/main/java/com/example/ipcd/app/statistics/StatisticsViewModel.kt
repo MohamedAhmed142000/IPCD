@@ -40,34 +40,24 @@ class StatisticsViewModel : ViewModel() {
             }
         } else allSavedAnswers
 
-        val filteredAnswers = allAnswers.filter { it.id >= 6 }
-
+        val filteredAnswers = allAnswers.filter { it.id >= 1 }
         val answersStatistics = mutableListOf<AnswerStatistics>()
         var HR = 0
         var HW = 0
         var Missed = 0
         filteredAnswers.forEachIndexed { _, answer ->
-            val missedAnswers = allAnswers.filter { it.text == "missed" }
-            val doctorsCount =
-                filteredList.count { answer.id == it.answerId && it.type == Type.Doctor.getId() }
-            val nursesCount =
-                filteredList.count { answer.id == it.answerId && it.type == Type.Nurse.getId() }
-            val workersCount =
-                filteredList.count { answer.id == it.answerId && it.type == Type.Worker.getId() }
+
             HR +=
                 filteredList.count { answer.id == it.answerId && answer.text == "HR" }
             HW +=
                 filteredList.count { answer.id == it.answerId && answer.text == "HW" }
             Missed +=
-                missedAnswers.size
+                filteredList.count { answer.id == it.answerId && answer.text == "missed" }
+
             answersStatistics.add(
                 AnswerStatistics(
                     answerId = answer.id,
                     answerText = answer.text,
-                    doctorsCount = doctorsCount,
-                    nursesCount = nursesCount,
-                    workersCount = workersCount,
-                    totalCount = missedAnswers.size,
                     HR = HR,
                     HW = HW,
                     Missed = Missed,
